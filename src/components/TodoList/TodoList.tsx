@@ -18,7 +18,7 @@ export const TodoList: FunctionComponent<Props> = ({
     return <NoTodos />;
   }
   return (
-    <ul style={{ padding: 0 }}>
+    <ul className="font-['Roboto']">
       {todos.map((todo) => (
         <TodoItem
           key={todo.id}
