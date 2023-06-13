@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FunctionComponent } from "react";
+import { AddTodo } from "../components/AddTodo";
+import { TodoList } from "../components/TodoList";
+import { useTodos } from "./useTodos"
 
-function App() {
+const TodoApp: FunctionComponent = () => {
+  const { todos, addTodo, completeTodo, deleteTodo } = useTodos([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+        <TodoList 
+          todos={todos}
+          onCompleteTodo={completeTodo}
+          onDeleteTodo={deleteTodo}
+        />
+        <AddTodo onAdd={addTodo}/>
+    </>
+  )
 }
 
-export default App;
+export default TodoApp;
